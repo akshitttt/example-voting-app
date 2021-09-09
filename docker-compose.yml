@@ -23,7 +23,7 @@ services:
 
   postgres:
     image: postgres:9.4
-    container_name: db
+    container_name: postgres_db
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
