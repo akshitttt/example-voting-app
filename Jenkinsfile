@@ -6,10 +6,20 @@ pipeline{
                 git url: 'https://github.com/akshitttt/example-voting-app.git'
             }
         }
-        stage('Build-Docker'){
-          steps{
-                sh "docker-compose build"
-                sh "docker-compose up -d"
+        stage('Build'){
+            steps{
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
+            }
+        }
+        stage('SonarQube Analysis'){
+            steps{
+                script{
+                    scannerHome = tool 'sonar';
+                }
+                withSonarQubeEnv('sonar') {
+                sh "${scannerHome}/bin/sonar-scanner"
+                }
             }
         }
     }
