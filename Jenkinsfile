@@ -12,15 +12,15 @@ pipeline{
                 sh 'docker-compose up -d'
             }
         }
-        stage('SonarQube Analysis'){
-            steps{
-                script{
-                    scannerHome = tool 'Sonarqube';
-                }
-                withSonarQubeEnv('Sonarqube') {
-                sh "${scannerHome}/bin/sonar-scanner"
-                }
-            }
-        }
+//         stage('SonarQube Analysis'){
+//             steps{
+//                 script{
+//                     scannerHome = tool 'Sonarqube';
+//                 }
+//                 withSonarQubeEnv('Sonarqube') {
+//                 sh "${scannerHome}/bin/sonar-scanner"
+//                 }
+//             }
+//         }
     }
 }
